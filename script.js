@@ -9,10 +9,19 @@ function debitLove100() {
         return;
     }
 
-    // Prepare the payload
+    // Get the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const lines = urlParams.get('lines');
+    const tags = urlParams.get('tags');
+    const recipient = urlParams.get('recipient');
+
+    // Prepare the payload with additional data from URL parameters
     const payload = {
         email: email,
-        transaction: transaction
+        transaction: transaction,
+        lines: lines,
+        tags: tags,
+        recipient: recipient
     };
 
     // Send the POST request to the API
